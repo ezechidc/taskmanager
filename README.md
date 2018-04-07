@@ -2,7 +2,7 @@
 
 This a simple RESTful API application that can be used to manage tasks and give updated and notes about each task. The application is written in go and uses MongoDB database for storage. This TaskManager RESTful API will be a JSON-based API in
 which the JSON data format will be used for sending and receiving messages among client applications and
-the RESTful API server. This is base one  the book Web Development with Go.
+the RESTful API server. This is based on  the book Web Development with Go by Shiju Varghese.
 
 The RESTful API application has been divided into the following packages:
  - common: Implements some utility functions and provides initialization logic for the
