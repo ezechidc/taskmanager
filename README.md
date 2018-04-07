@@ -13,7 +13,7 @@ application
  - routers: Implements the HTTP request routers for the RESTful API
 
 | URI | HTTP Verb | Functionality |
-| --- |:---------:| -------------:|
+| :--- |:---------| :------------- |
 |/users/register| Post | Creates a new user.|
 |/users/login| | Post | User logs in to the system, which returns a JWT if the login is successful. |
 |/tasks | Post | Creates a new task. |
