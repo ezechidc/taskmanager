@@ -3,7 +3,7 @@ package routers
 import (
 	"github.com/codegangsta/negroni"
 	"github.com/ezechidc/taskmanager/common"
-	"github.com/ezechidc/web_dev_go/taskmanager/controllers"
+	"github.com/ezechidc/taskmanager/controllers"
 	"github.com/gorilla/mux"
 )
 
