@@ -59,7 +59,7 @@ func GenerateJWT(name, role string) (string, error) {
 		name,
 		role,
 		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(time.Minute * 2000).Unix(),
+			ExpiresAt: time.Now().Add(time.Minute * 20).Unix(),
 			Issuer:    "admin",
 		},
 	}

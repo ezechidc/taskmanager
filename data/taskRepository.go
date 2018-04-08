@@ -13,15 +13,18 @@ type TaskRepository struct {
 	C *mgo.Collection
 }
 
+//Create creates and store task to database
 func (r *TaskRepository) Create(task *models.Task) error {
-	obj_id := bson.NewObjectId()
-	task.ID = obj_id
+	objID := bson.NewObjectId()
+	task.ID = objID
 	task.CreatedOn = time.Now()
 	task.Status = "Created"
 	log.Print(task)
 	err := r.C.Insert(&task)
 	return err
 }
+
+//Update a task with id provided
 func (r *TaskRepository) Update(task *models.Task) error {
 	// partial update on MogoDB
 	err := r.C.Update(bson.M{"_id": task.ID},
@@ -35,10 +38,13 @@ func (r *TaskRepository) Update(task *models.Task) error {
 	return err
 }
 
+//Delete a task with a given id
 func (r *TaskRepository) Delete(id string) error {
 	err := r.C.Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 	return err
 }
+
+//GetAll gets all tasks in the database
 func (r *TaskRepository) GetAll() []models.Task {
 	var tasks []models.Task
 	iter := r.C.Find(nil).Iter()
@@ -48,11 +54,14 @@ func (r *TaskRepository) GetAll() []models.Task {
 	}
 	return tasks
 }
+
+//GetById gets a task with a given id
 func (r *TaskRepository) GetById(id string) (task models.Task, err error) {
 	err = r.C.FindId(bson.ObjectIdHex(id)).One(&task)
 	return
 }
 
+//GetByUser gets all tasks created by a user
 func (r *TaskRepository) GetByUser(user string) []models.Task {
 	var tasks []models.Task
 	iter := r.C.Find(bson.M{"createdby": user}).Iter()

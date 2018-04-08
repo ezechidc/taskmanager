@@ -13,6 +13,6 @@ func InitRoutes() *mux.Router {
 	// Routes for the TaskNote entity
 	router = SetTaskRoutes(router)
 	// Routes for the TaskNote entity
-	//router = SetNoteRoutes(router)
+	router = SetNoteRoutes(router)
 	return router
 }
