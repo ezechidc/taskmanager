@@ -1,0 +1,18 @@
+version: '3'  
+services: 
+  web:
+    build: .
+    container_name: "taskmanager"
+    ports:
+    - "8080:8080"
+    volumes: 
+      - .:/go/src/githbub.com/ezechidc/taskmanager
+    links:
+    - mongo
+    environment:
+      - DB_NAME=advanced-golang-db
+
+  mongo:
+    image: mongo
+    container_name: "mongodb"
+    command: mongod --smallfiles --quiet --logpath=/dev/null
